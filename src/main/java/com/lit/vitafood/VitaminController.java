@@ -17,9 +17,27 @@ public class VitaminController {
         return vitaminService.findAll();
     }
 
+    @GetMapping("/vitamin/{id}")
+    public Vitamin getVitamin(@PathVariable(value = "id") Long id) {
+        return vitaminService.findById(id);
+    }
+
     @PostMapping("/vitamin")
-    void addVitamin(@RequestBody Vitamin vitamin) {
+    public void create(@RequestBody Vitamin vitamin) {
         vitaminService.create(vitamin);
+    }
+
+    @PutMapping("/vitamin/{id}")
+    public void update(@PathVariable(value = "id") Long id, @RequestBody Vitamin vitaminDetail) {
+        Vitamin vitamin = vitaminService.findById(id);
+        vitamin.setName(vitaminDetail.getName());
+        vitaminService.update(vitamin);
+    }
+
+    @DeleteMapping("/vitamin/{id}")
+    public void delete(@PathVariable(value = "id") Long id) {
+        System.out.println();
+        vitaminService.delete(id);
     }
 
 }

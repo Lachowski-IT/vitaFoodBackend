@@ -16,11 +16,19 @@ public class VitaminService {
         return (List<Vitamin>) vitaminRepository.findAll();
     }
 
+    public Vitamin findById(long id) {
+        return vitaminRepository.findById(id).get();
+    }
+
     public void create(Vitamin vitamin) {
         vitaminRepository.save(vitamin);
     }
 
-    public Optional<Vitamin> findById(long id) {
-        return vitaminRepository.findById(id);
+    public void update(Vitamin vitamin) {
+        vitaminRepository.save(vitamin);
+    }
+
+    public void delete(Long id) {
+        vitaminRepository.deleteById(id);
     }
 }
